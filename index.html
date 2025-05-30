@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Atur Aja - Input Data</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Atur Aja - Input Data</h1>
+  </header>
+  <main>
+    <!-- Input Bahan Baku -->
+    <section>
+      <h2>Input Bahan Baku</h2>
+      <form id="bahanBakuForm">
+        <label for="bahanNama">Nama Bahan</label>
+        <input type="text" id="bahanNama" name="bahanNama" required />
+
+        <label for="bahanStok">Stok</label>
+        <input type="number" id="bahanStok" name="bahanStok" required />
+
+        <label for="bahanLeadTime">Waktu Pembelian (Lead Time)</label>
+        <input type="number" id="bahanLeadTime" name="bahanLeadTime" required />
+
+        <label for="bahanHarga">Harga Beli</label>
+        <input type="number" id="bahanHarga" name="bahanHarga" required />
+
+        <label for="bahanDailyUsage">Penggunaan Harian</label>
+        <input type="number" id="bahanDailyUsage" name="bahanDailyUsage" required />
+
+        <label for="bahanSafetyStock">Safety Stock</label>
+        <input type="number" id="bahanSafetyStock" name="bahanSafetyStock" required />
+
+        <button type="submit">Simpan Bahan Baku</button>
+      </form>
+    </section>
+
+    <!-- Input Produk -->
+    <section>
+      <h2>Input Produk</h2>
+      <form id="produkForm">
+        <label for="produkNama">Nama Produk</label>
+        <input type="text" id="produkNama" name="produkNama" required />
+
+        <label for="produkSatuan">Satuan</label>
+        <input type="text" id="produkSatuan" name="produkSatuan" required />
+
+        <label for="produkKomponen">Komponen Pembentuk (Bahan + Jumlah)</label>
+        <div id="produkKomponenContainer">
+          <div class="komponenRow">
+            <input type="text" placeholder="Nama Bahan" class="komponenNama" required />
+            <input type="number" placeholder="Jumlah" class="komponenJumlah" required />
+            <button type="button" class="removeKomponenBtn">Hapus</button>
+          </div>
+        </div>
+        <button type="button" id="addKomponenBtn">Tambah Komponen</button>
+
+        <button type="submit">Simpan Produk</button>
+      </form>
+    </section>
+
+    <!-- Waktu Pakai -->
+    <section>
+      <h2>Waktu Pakai</h2>
+      <form id="waktuPakaiForm">
+        <label>
+          <input type="radio" name="waktuPakai" value="harian" checked />
+          Harian
+        </label>
+        <label>
+          <input type="radio" name="waktuPakai" value="bulanan" />
+          Bulanan
+        </label>
+      </form>
+    </section>
+  </main>
+  <script src="main.js"></script>
+</body>
+</html>

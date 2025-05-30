@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Atur Aja - Input Data</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f7f8;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      color: #333;
+    }
+    header {
+      background-color: #3399ff;
+      padding: 1rem 2rem;
+      color: white;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    h2 {
+      color: #3399ff;
+      margin-bottom: 1rem;
+    }
+    form {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    select[multiple] {
+      height: 100px;
+    }
+    button {
+      background-color: #3399ff;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 0.5rem;
+    }
+    button:hover,
+    button:focus {
+      background-color: #267acc;
+      outline: none;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #3399ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .back-link:hover,
+    .back-link:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+    .bahan-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .bahan-row input {
+      margin-bottom: 0;
+    }
+    .remove-btn {
+      background-color: #ff4d4d;
+      padding: 0.3rem 0.6rem;
+      font-size: 1.2rem;
+      line-height: 1;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    .remove-btn:hover {
+      background-color: #cc0000;
+    }
+    @media (min-width: 600px) {
+      form {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Atur Aja - Input Data</h1>
+  </header>
+  <main>
+    <section aria-labelledby="raw-materials-title">
+      <h2 id="raw-materials-title">Input Bahan Baku</h2>
+      <form id="bahanBakuForm">
+        <label for="bahanNama">Nama Bahan</label>
+        <input type="text" id="bahanNama" name="bahanNama" required />
+
+        <label for="bahanStok">Stok</label>
+        <input type="number" id="bahanStok" name="bahanStok" required />
+
+        <label for="bahanLeadTime">Waktu Pembelian (Lead Time)</label>
+        <input type="number" id="bahanLeadTime" name="bahanLeadTime" required />
+
+        <label for="bahanHarga">Harga Beli</label>
+        <input type="number" id="bahanHarga" name="bahanHarga" required />
+
+        <label for="bahanDailyUsage">Penggunaan Harian</label>
+        <input type="number" id="bahanDailyUsage" name="bahanDailyUsage" required />
+
+        <label for="bahanSafetyStock">Safety Stock</label>
+        <input type="number" id="bahanSafetyStock" name="bahanSafetyStock" required />
+
+        <button type="submit">Simpan Bahan Baku</button>
+      </form>
+    </section>
+
+    <section aria-labelledby="product-input-title">
+      <h2 id="product-input-title">Input Produk</h2>
+      <form id="product-form" aria-describedby="product-desc" novalidate>
+        <p id="product-desc" class="sr-only">Form untuk memasukkan data produk seperti nama produk, harga jual, dan bahan yang digunakan.</p>
+        <div style="margin-bottom: 1rem;">
+          <label for="product-name">Nama Produk</label>
+          <input type="text" id="product-name" name="productName" required aria-required="true" autocomplete="off" />
+        </div>
+        <div style="margin-bottom: 1rem;">
+          <label for="product-price">Harga Jual (Rp)</label>
+          <input type="number" id="product-price" name="productPrice" min="0" step="100" required aria-required="true" />
+        </div>
+        <div style="margin-bottom: 1rem;">
+          <label for="product-materials">Bahan yang Digunakan (Pilih satu atau lebih)</label>
+          <select id="product-materials" name="productMaterials" multiple size="5" aria-multiselectable="true" required aria-required="true" aria-describedby="materials-help">
+            <!-- Options akan diisi secara dinamis -->
+          </select>
+          <small id="materials-help">Tekan Ctrl (Cmd di Mac) untuk memilih lebih dari satu bahan.</small>
+        </div>
+        <button type="submit" aria-label="Simpan Produk">Simpan Produk</button>
+      </form>
+    </section>
+
+    <a href="dashboard.html" class="back-link" aria-label="Kembali ke Dashboard">← Kembali ke Dashboard</a>
+  </main>
+
+  <script>
+    // Penyimpanan data sementara (in-memory)
+    const rawMaterials = [];
+    const products = [];
+
+    // Elemen-elemen DOM
+    const bahanBakuList = document.getElementById('bahanBakuList');
+    const addBahanBtn = document.getElementById('addBahanBtn');
+    const bahanBakuForm = document.getElementById('bahanBakuForm');
+    const productForm = document.getElementById('product-form');
+    const productMaterialsSelect = document.getElementById('product-materials');
+
+    // Fungsi untuk membuat baris input bahan baku baru
+    function createBahanRow(name = '', price = '', stock = '') {
+      const div = document.createElement('div');
+      div.className = 'bahan-row';
+
+      // Input Nama Bahan
+      const inputName = document.createElement('input');
+      inputName.type = 'text';
+      inputName.name = 'materialName';
+      inputName.placeholder = 'Nama Bahan';
+      inputName.value = name;
+      inputName.required = true;
+      inputName.setAttribute('aria-label', 'Nama Bahan Baku');
+
+      // Input Harga Beli
+      const inputPrice = document.createElement('input');
+      inputPrice.type = 'number';
+      inputPrice.name = 'materialPrice';
+      inputPrice.placeholder = 'Harga Beli (Rp)';
+      inputPrice.min = '0';
+      inputPrice.step = '100';
+      inputPrice.value = price;
+      inputPrice.required = true;
+      inputPrice.setAttribute('aria-label', 'Harga Beli Bahan Baku');
+
+      // Input Stok
+      const inputStock = document.create
+  </script>
+</body>
+</html>
